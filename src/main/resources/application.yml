@@ -1,0 +1,32 @@
+spring:
+  application:
+    name: spring_liquibase
+  liquibase:
+    enabled: true
+  datasource:
+# configuration for postgresql
+#    url: jdbc:postgresql://localhost:5444/user-api
+    url: jdbc:postgresql://${DATASOURCE_HOST:localhost}:5444/user-api
+    username: admin
+    password: admin
+  # configuration for h2
+#    url: jdbc:h2:file:./db;NON_KEYWORDS=USER # в корне проект файл бд db.mv.db
+#    username: u # имя пользователя консоли
+#    password: 1 # пароль консоли
+#    driver-class-name: org.h2.Driver
+
+
+  jpa:
+#    database-platform: org.hibernate.dialect.H2Dialecta
+    hibernate:
+      ddl-auto: none
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
+  #  h2:
+#    console:
+#      enabled: true
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  logging:
+    level: debug
